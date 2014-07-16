@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -46,6 +47,25 @@ public class MainActivity extends Activity {
 
 		i.putExtra("vip", bag);
 
-		startActivity(i);
+		// startActivity(i);
+		startActivityForResult(i, 1);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,
+			Intent returnedIntent) {
+
+		if (requestCode == 1) {
+			if (resultCode == RESULT_OK) {
+
+				String msg = returnedIntent.getStringExtra("MSG");
+				Toast.makeText(getBaseContext(),
+						"Msg from Second Activity : " + msg, Toast.LENGTH_SHORT)
+						.show();
+
+			}
+		}
+
+		super.onActivityResult(requestCode, resultCode, returnedIntent);
 	}
 }

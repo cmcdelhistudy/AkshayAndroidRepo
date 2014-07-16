@@ -1,9 +1,9 @@
 package com.example.akshayintentstudyapp;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,5 +32,15 @@ public class SecondActivity extends Activity {
 		Toast.makeText(getBaseContext(), "Comics : " + obtainedComics,
 				Toast.LENGTH_SHORT).show();
 
+	}
+
+	public void goBack(View v) {
+
+		Intent i = new Intent();
+		i.putExtra("MSG", "Work Done");
+
+		setResult(RESULT_OK, i);
+
+		finish();
 	}
 }
